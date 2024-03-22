@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <main id="main">
+      <!-- ======= Hero Slider Section ======= -->
+      <section id="hero-slider" class="hero-slider">
+        <div class="container-md" data-aos="fade-in">
+          <div class="row">
+            <div class="col-12">
+              <div class="swiper sliderFeaturedPosts">
+                <div class="swiper-wrapper">
+                  {% for hero in hero %}
+                  <div class="swiper-slide">
+                    <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('{% static 'assets/img/post-slide-1.jpg' %} ');">
+                      <div class="img-bg-inner">
+                        <h2>{{hero.title | truncatechars:50}}</h2>
+                        <p>{{hero.description | truncatechars:150 | safe}}</p>
+                      </div>
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="custom-swiper-button-next">
+                  <span class="bi-chevron-right"></span>
+                </div>
+                <div class="custom-swiper-button-prev">
+                  <span class="bi-chevron-left"></span>
+                </div>
+
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Hero Slider Section -->
+
+      <!-- ======= Post Grid Section ======= -->
+      <section id="posts" class="posts">
+        <div class="container" data-aos="fade-up">
+          <div class="row g-5">
+            <div class="col-lg-4">
+              {% for post_lg in post_entry_lg %}
+                <div class="post-entry-1 lg">
+                  <a href="single-post.html"><img src="{% static 'assets/img/post-landscape-1.jpg' %}" alt="" class="img-fluid" /></a>
+                  <div class="post-meta">
+                    <span class="date">{{ post_lg.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post_lg.created_at|date }}</span>
+                  </div>
+                  <h2><a href="single-post.html">{{ post_lg.title|truncatechars:30 }}</a></h2>
+                  <p class="mb-4 d-block">{{ post_lg.description|safe|truncatechars:270 }}</p>
+
+                  <div class="d-flex align-items-center author">
+                    <div class="photo">
+                      <img src="{% static 'assets/img/person-1.jpg' %}" alt="" class="img-fluid" />
+                    </div>
+                    <div class="name">
+                      <h3 class="m-0 p-0">Cameron Williamson</h3>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="col-lg-8">
+              <div class="row g-5">
+                <div class="col-lg-4 border-start custom-border">
+                  {% for post_entry in post_entry_1 %}
+                    <div class="post-entry-1">
+                      <a href="single-post.html"><img src="{% static 'assets/img/post-landscape-2.jpg' %}" alt="" class="img-fluid" /></a>
+                      <div class="post-meta">
+                        <span class="date">{{ post_entry.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post_entry.created_at|date }}</span>
+                      </div>
+                      <h2><a href="single-post.html">{{ post_entry.title|truncatechars:40 }}</a></h2>
+                    </div>
+
+                    <div class="d-flex align-items-center author mb-3">
+                      <div class="photo">
+                        <img src="{% static 'assets/img/person-1.jpg' %}" alt="" class="img-fluid" />
+                      </div>
+                      <div class="name">
+                        <h3 class="m-0 p-0">Cameron Williamson</h3>
+                      </div>
+                    </div>
+
+                  {% endfor %}
+                </div>
+                <div class="col-lg-4 border-start custom-border">
+                  {% for post_entry in post_entry_2 %}
+                    <div class="post-entry-1">
+                      <a href="single-post.html"><img src="{% static 'assets/img/post-landscape-2.jpg' %}" alt="" class="img-fluid" /></a>
+                      <div class="post-meta">
+                        <span class="date">{{ post_entry.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post_entry.created_at|date }}</span>
+                      </div>
+                      <h2><a href="single-post.html">{{ post_entry.title|truncatechars:40 }}</a></h2>
+                    </div>
+
+                    <div class="d-flex align-items-center author mb-3">
+                      <div class="photo">
+                        <img src="{% static 'assets/img/person-1.jpg' %}" alt="" class="img-fluid" />
+                      </div>
+                      <div class="name">
+                        <h3 class="m-0 p-0">Cameron Williamson</h3>
+                      </div>
+                    </div>
+
+                  {% endfor %}
+                </div>
+
+                <!-- Trending Section -->
+                <div class="col-lg-4">
+                  <div class="trending">
+                    <h3>Trending</h3>
+                    <ul class="trending-post">
+                      <li>
+                        <a href="single-post.html">
+                          <span class="number">1</span>
+                          <h3>The Best Homemade Masks for Face (keep the Pimples Away)</h3>
+                          <span class="author">Jane Cooper</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="single-post.html">
+                          <span class="number">2</span>
+                          <h3>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h3>
+                          <span class="author">Wade Warren</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="single-post.html">
+                          <span class="number">3</span>
+                          <h3>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h3>
+                          <span class="author">Esther Howard</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="single-post.html">
+                          <span class="number">4</span>
+                          <h3>9 Half-up/half-down Hairstyles for Long and Medium Hair</h3>
+                          <span class="author">Cameron Williamson</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="single-post.html">
+                          <span class="number">5</span>
+                          <h3>Life Insurance And Pregnancy: A Working Mom’s Guide</h3>
+                          <span class="author">Jenny Wilson</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div> <!-- End Trending Section -->
+              </div>
+            </div>
+          </div> <!-- End .row -->
+        </div>
+      </section> <!-- End Post Grid Section -->
+
+      <!-- ======= Category Section ======= -->
+      {% for cat in categories %}
+        <section class="category-section">
+          <div class="container" data-aos="fade-up">
+            <div class="section-header d-flex justify-content-between align-items-center mb-5">
+              <h2>{{ cat.category_name }}</h2>
+              <div>
+                <a href="category.html" class="more">See All {{ cat.category_name }}</a>
+              </div>
+            </div>
+            <div class="row">
+              {% for post in cat.categories.all %}
+                <div class="col-md-3">
+                  <div class="post-entry-1">
+                    <a href="{% url "single_post" post.id %}"><img src="{% static 'assets/img/post-landscape-2.jpg' %}" alt="" class="img-fluid" /></a>
+                    <div class="post-meta">
+                      <span class="date">{{ post.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post.created_at| date }}</span>
+                    </div>
+                    <h2><a href="{% url "single_post" post.id %}">{{ post.title|truncatechars:40 }}</a></h2>
+                  </div>
+
+                  <div class="d-flex align-items-center author mb-3">
+                    <div class="photo">
+                      <img src="{% static 'assets/img/person-1.jpg' %}" alt="" class="img-fluid" />
+                    </div>
+                    <div class="name">
+                      <h3 class="m-0 p-0">Cameron Williamson</h3>
+                    </div>
+                  </div>
+
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+        <!-- End Category Section -->
+      {% endfor %}
+    </main>
+    <!-- End #main -->
+{% endblock content %}
