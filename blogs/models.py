@@ -21,6 +21,7 @@ class Post(models.Model):
     description = RichTextField()
     categories = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='categories')
     tags = models.ManyToManyField(Tag, null=True, blank=True, related_name='tags')
+    views = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
