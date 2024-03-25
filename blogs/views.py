@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blogs.models import Post, Category
+from blogs.models import Post, Category, Comment
 
 # Create your views here.
 def index(request):
@@ -25,8 +25,10 @@ def single_post(request, id):
     latest = Post.objects.all().order_by('-created_at')[0:5]
     hero = Post.objects.all().order_by('-created_at')[0:4]
     categories = Category.objects.all()
-    
+
     post = get_object_or_404(Post, id=id)
+    comments = Comment.objects.filter(post=post)
+    comment_count = comments.count()
     post.views += 1
     post.save()
 
@@ -36,5 +38,7 @@ def single_post(request, id):
         'hero':hero,
         'categories':categories,
         'post':post,
+        'comments':comments,
+        'comment_count':comment_count,
     }
     return render(request, 'single-post.html', context)
