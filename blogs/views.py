@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from blogs.models import Post, Category, Comment
+from blogs.forms import CommentForm
 
 # Create your views here.
 def index(request):
@@ -32,6 +33,16 @@ def single_post(request, id):
     post.views += 1
     post.save()
 
+    form = CommentForm()
+    if request.POST:
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            post_id = request.POST['post_id']
+            comment.post = Post.objects.get(id=post_id)
+            comment.message = request.POST['message']
+            comment.save()
+
     context = {
         'popular':popular,
         'latest':latest,
@@ -40,5 +51,6 @@ def single_post(request, id):
         'post':post,
         'comments':comments,
         'comment_count':comment_count,
+        'form':form,
     }
     return render(request, 'single-post.html', context)
